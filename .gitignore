@@ -25,8 +25,8 @@ dist-ssr
 
 docs
 docs2
-features
-other-content
+public/downloads
+public/features
 .env
 names.txt
 toc.txt
