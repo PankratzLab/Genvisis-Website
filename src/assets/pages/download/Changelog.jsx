@@ -4,14 +4,14 @@ import parse from "html-react-parser";
 export default function Changelog() {
   const [changelogs, setChangelogs] = useState([]);
   async function setHTML(HTML) {
-    const data = await fetch(`other-content/Downloads/${HTML}`);
+    const data = await fetch(`Downloads/${HTML}`);
     const res = await data.text();
     setChangelogs((prev) => [...prev, res]);
   }
 
   useEffect(() => {
     (async () => {
-      const data = await fetch("other-content/Downloads/fileNames.json");
+      const data = await fetch("Downloads/fileNames.json");
       const res = await data.json();
       for (const HTML of res) {
         await setHTML(HTML);
