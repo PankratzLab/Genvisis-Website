@@ -1,0 +1,70 @@
+header.download-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+
+  h1 {
+    margin: 0;
+    margin-top: 2em;
+  }
+
+  .download-buttons {
+    display: flex;
+    gap: 2em;
+  }
+
+  .dl-button {
+    background-color: $blue-light;
+    color: rgb(255, 255, 255);
+    padding: 0.5em;
+    width: 15em;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .previous-version {
+    color: $blue-light;
+    background-color: rgb(255, 255, 255);
+    border: solid $blue-light;
+  }
+}
+
+.custom-shape-divider-bottom-1686808296 {
+  position: absolute;
+  top: 270px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: -1;
+}
+
+.custom-shape-divider-bottom-1686808296 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 107px;
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.11));
+}
+
+main.release-content-container {
+  width: 100vw;
+  margin-top: 80px;
+  padding-block: 2em;
+  background-color: rgb(255, 255, 255);
+}
+
+.release-content {
+  @media (min-width: 1200px) {
+    width: 1140px;
+    margin-inline: auto;
+  }
+  padding-inline: 2em;
+}
