@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
+import Versions from "./Versions";
 
 export default function Changelog() {
   const [changelogs, setChangelogs] = useState([]);
-  async function setHTML(HTML) {
-    const data = await fetch(`Downloads/${HTML}`);
-    const res = await data.text();
-    setChangelogs((prev) => [...prev, res]);
-  }
-
   useEffect(() => {
     (async () => {
       const data = await fetch("Downloads/fileNames.json");
       const res = await data.json();
-      for (const HTML of res) {
-        await setHTML(HTML);
-      }
+
+      const arrayPromise = await Promise.all(res.map(u => fetch(`Downloads/${u}`)))
+      const arrayPromiseRes = await Promise.all(arrayPromise.map(res => res.text()))
+      setChangelogs(arrayPromiseRes)
     })();
   }, []);
 
-  const options = {
+  const optionsContent = {
     replace: ({ name, attribs, children }) => {
       //make all non-anchor links open in new tab
       if (name === "a" && attribs.href[0] !== "#") {
@@ -31,7 +27,17 @@ export default function Changelog() {
       }
 
       if (name === "h2" || name === "h3") {
-        return <div>{children[0].data}</div>;
+        return <></>
+      }
+    },
+  };
+
+  const optionsHeader = {
+    replace: ({ name, attribs, children }) => {
+      if (name === "h2") {
+        return <h2>{children[0].data}</h2>;
+      } else {
+        return <></>
       }
     },
   };
@@ -39,7 +45,7 @@ export default function Changelog() {
   return (
     <div className="release-boxes-container">
       {changelogs?.reverse().map((e, index) => {
-        return <div key={index}>{parse(e, options)}</div>;
+        return <Versions key={index} content={parse(e, optionsContent)} header={parse(e, optionsHeader)}/>
       })}
     </div>
   );

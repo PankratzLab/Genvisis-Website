@@ -68,3 +68,41 @@ main.release-content-container {
   }
   padding-inline: 2em;
 }
+
+.release-boxes-container {
+  .version-container {
+    background-color: rgb(236, 236, 236);
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-block: 1em;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    font-family: $textNormal;
+    margin: 0;
+  }
+  
+  .header {
+    margin-block: 1em;
+    display: flex;
+    gap: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  svg {
+    position: relative;
+    top: 3px;
+    height: 15px;
+    width: auto;
+    opacity: 0.5;
+    transition: 0.2s;
+  }
+
+  .body {
+    padding-left: 1.5em;
+    overflow: hidden;
+  }
+}
