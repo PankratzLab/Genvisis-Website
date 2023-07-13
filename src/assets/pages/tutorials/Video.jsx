@@ -11,7 +11,7 @@ export default function Video() {
   const videoRef = useRef();
 
   async function fetchData() {
-    const data = await fetch("Tutorials/toc.json");
+    const data = await fetch("/Tutorials/toc.json");
     const res = await data.json();
     const sanitizedEntries = res.filter((e) => Object.keys(e)[0] === paths[0])[0];
     setContent(Object.values(sanitizedEntries)[0].filter((e) => e.title === paths[1])[0]);
@@ -70,7 +70,7 @@ export default function Video() {
       >
         <h1>{content.title} <span className="category">{paths[0]}</span></h1>
         <video controls ref={videoRef}>
-          <source src={`Tutorials/videos/${content.src}`} type="video/mp4" />
+          <source src={`/Tutorials/videos/${content.src}`} type="video/mp4" />
         </video>
         <p>{content.summary}</p>
       </motion.div>

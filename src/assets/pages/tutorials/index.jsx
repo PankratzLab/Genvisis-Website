@@ -10,7 +10,7 @@ export default function index() {
 
   useEffect(() => {
     (async () => {
-      const data = await fetch("Tutorials/toc.json");
+      const data = await fetch("/Tutorials/toc.json");
       const res = await data.json();
       setSidebar(res);
 
