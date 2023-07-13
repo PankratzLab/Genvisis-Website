@@ -1,4 +1,4 @@
-## Genvisis 1.2.0
+## Genvisis 2.0.0
 June 1, 2024
 
 [Download](genvisis.umn.edu/jar)
