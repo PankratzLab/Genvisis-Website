@@ -1,0 +1,168 @@
+main.tutorials,
+header.tutorials,
+main.tutorial-video {
+  @media (min-width: 1200px) {
+    width: 1200px;
+    margin-inline: auto;
+  }
+  padding-inline: 2em;
+
+  h1 {
+    margin-top: 4em;
+    font-family: $textNormal;
+    font-weight: 100;
+    color: $textCol-medium;
+  }
+
+  .dividing-line {
+    width: 100%;
+    height: 1.5px;
+    background: linear-gradient(
+      90deg,
+      rgba(11, 16, 22, 0) 0%,
+      rgba(5, 8, 10, 0.288) 30%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    margin-bottom: 2em;
+  }
+}
+
+main.tutorials {
+  display: flex;
+
+  .sidebar {
+    margin-top: -20px;
+    width: 200px;
+    a {
+      display: block;
+      color: $textCol-medium;
+      padding-block: 1em;
+      transition: 0.2s;
+      &:hover {
+        cursor: pointer;
+        color: $textCol-dark;
+      }
+    }
+
+    .active {
+      color: $blue-light;
+      font-weight: 700;
+      &:hover {
+        cursor: pointer;
+        color: $blue-light;
+      }
+    }
+  }
+
+  .content {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 2em;
+  }
+
+  a {
+    color: $textCol-medium;
+  }
+
+  .thumbnail {
+    background-color: rgb(211, 211, 211);
+    height: 160px;
+    border-radius: 0.5em;
+    margin-bottom: 0.6em;
+  }
+
+  .title {
+    margin-left: 3px;
+  }
+}
+
+main.tutorial-video {
+  display: flex;
+  margin-top: 8em;
+  gap: 3em;
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    display: flex;
+    gap: 0.8em;
+  }
+
+  video {
+    @media (min-width: 1200px) {
+      width: 890px;
+      margin-inline: auto;
+    }
+    margin-top: 1.5em;
+    width: calc(100vw - 250px);
+    height: auto;
+    border-radius: 0.5em;
+  }
+
+  .content {
+    flex-grow: 1;
+  }
+
+  svg {
+    margin-right: 10px;
+    position: relative;
+    top: 3px;
+    height: 23px;
+    width: auto;
+    opacity: 0.5;
+  }
+
+  .category {
+    font-size: 1.1rem;
+    opacity: 0.7;
+  }
+
+  .sidebar {
+    width: 200px;
+    color: $textCol-medium;
+
+    .back {
+      font-size: 1.4rem;
+      padding: 0;
+    }
+
+    a {
+      font-size: 1rem;
+      color: $textCol-medium;
+      display: block;
+      padding-block: 1em;
+      transition: 0.2s;
+      &:hover {
+        cursor: pointer;
+        color: $textCol-dark;
+      }
+    }
+
+    .active {
+      color: $blue-light;
+      font-weight: 700;
+      &:hover {
+        cursor: pointer;
+        color: $blue-light;
+      }
+    }
+
+    .dividing-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        rgba(11, 16, 22, 0) 0%,
+        rgba(5, 8, 10, 0.288) 30%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      margin-block: 0.8em;
+    }
+  }
+
+  .video-list {
+    margin-left: 0.5em;
+  }
+}

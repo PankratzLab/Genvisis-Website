@@ -56,6 +56,7 @@ header.download-container {
 
 main.release-content-container {
   width: 100vw;
+  height: 100vh;
   margin-top: 80px;
   padding-block: 2em;
   background-color: rgb(255, 255, 255);
@@ -104,5 +105,6 @@ main.release-content-container {
   .body {
     padding-left: 1.5em;
     overflow: hidden;
+    height: 0;
   }
 }

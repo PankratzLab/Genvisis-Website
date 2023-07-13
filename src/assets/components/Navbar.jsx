@@ -18,7 +18,7 @@ export default function Navbar() {
             <Link to="/features">Features</Link>
           </li>
           <li>
-            <Link to="/tutorials">Tutorials</Link>
+            <Link to="/tutorials/All">Tutorials</Link>
           </li>
           <li>
             <Link to="/documentation/home">Documentation</Link>

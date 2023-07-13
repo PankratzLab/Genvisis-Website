@@ -9,9 +9,9 @@ export default function Changelog() {
       const data = await fetch("Downloads/fileNames.json");
       const res = await data.json();
 
-      const arrayPromise = await Promise.all(res.map(u => fetch(`Downloads/${u}`)))
-      const arrayPromiseRes = await Promise.all(arrayPromise.map(res => res.text()))
-      setChangelogs(arrayPromiseRes)
+      const arrayPromise = await Promise.all(res.map((u) => fetch(`Downloads/${u}`)));
+      const arrayPromiseRes = await Promise.all(arrayPromise.map((res) => res.text()));
+      setChangelogs(arrayPromiseRes);
     })();
   }, []);
 
@@ -27,7 +27,7 @@ export default function Changelog() {
       }
 
       if (name === "h2" || name === "h3") {
-        return <></>
+        return <></>;
       }
     },
   };
@@ -37,7 +37,7 @@ export default function Changelog() {
       if (name === "h2") {
         return <h2>{children[0].data}</h2>;
       } else {
-        return <></>
+        return <></>;
       }
     },
   };
@@ -45,7 +45,14 @@ export default function Changelog() {
   return (
     <div className="release-boxes-container">
       {changelogs?.reverse().map((e, index) => {
-        return <Versions key={index} content={parse(e, optionsContent)} header={parse(e, optionsHeader)}/>
+        return (
+          <Versions
+            key={index}
+            delay={index}
+            content={parse(e, optionsContent)}
+            header={parse(e, optionsHeader)}
+          />
+        );
       })}
     </div>
   );
