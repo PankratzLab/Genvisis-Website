@@ -52,6 +52,10 @@ const localDirectories = [
     name: "Features",
     directory: path.join(__dirname, "Features")
   },
+  {
+    name: "Tutorials",
+    directory: path.join(__dirname, "Tutorials")
+  }
 ]
 
 async function cloneRepositories() {
