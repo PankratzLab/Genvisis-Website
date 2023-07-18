@@ -2,6 +2,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const gitClone = require("git-clone/promise");
 const showdown = require("showdown");
+const ffmpeg = require('fluent-ffmpeg');
 
 function convertMarkdownToHTML(markdown) {
   const converter = new showdown.Converter();
@@ -27,6 +28,21 @@ function traverseDirectory(directory) {
       filePaths.push(htmlFileName)
       fs.unlinkSync(filePath);
       console.log(`Converted ${filePath} to ${htmlFileName}`);
+    } else if (file.endsWith(".mp4")) {
+      console.log(filePath)
+      ffmpeg(filePath)
+        .screenshots({
+          timestamps: ['00:00:05'],
+          filename: file.replace(".mp4", ".jpg"),
+          folder: path.join(filePath, ".."),
+          size: '640x360'
+        })
+        .on('end', () => {
+          console.log(`${file} thumbnail image generated successfully!`);
+        })
+        .on('error', (err) => {
+          console.error('Error occurred while generating thumbnail:', err);
+        });
     }
   }
 

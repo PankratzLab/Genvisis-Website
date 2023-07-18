@@ -15,15 +15,16 @@ export default function index() {
       setSidebar(res);
 
       res.map((e) => {
-        Object.values(e)[0].map(r => {
-          r.category = Object.keys(e)[0]
-        })
+        Object.values(e)[0].map((r) => {
+          r.category = Object.keys(e)[0];
+        });
         const parsedData = (prev) => {
           return [...prev, ...Object.values(e)[0]];
-        }
+        };
         setData(parsedData);
         setContent(parsedData);
       });
+      console.log(res);
     })();
   }, []);
 
@@ -81,7 +82,15 @@ export default function index() {
                   className="thumbnail-container"
                 >
                   <Link to={`/tutorials/${e.category}/${e.title}`}>
-                    <div className="thumbnail"></div>
+                    <div
+                      className="thumbnail"
+                      style={{
+                        backgroundImage: `url(/Tutorials/videos/${
+                          e.src.slice(0, -4) + ".jpg"
+                        })`,
+                        backgroundSize: 'cover'
+                      }}
+                    ></div>
                     <div className="title">{e.title}</div>
                   </Link>
                 </motion.div>
