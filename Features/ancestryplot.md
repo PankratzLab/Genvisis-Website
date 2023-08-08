@@ -1,4 +1,6 @@
-# AncestryPlot: Visualize the genetic distance between individuals
+# AncestryPlot
+
+Visualize the genetic distance between individuals
 
 AncestryPlot displays the result of a standard principal components analysis (PCA). Exploring higher-order PCs can help us distinguish between more closely related populations and identify possible haplotype effects or batch effects that we want to address prior to including these samples in a genetic analysis.
 

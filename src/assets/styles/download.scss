@@ -107,4 +107,10 @@ main.release-content-container {
     overflow: hidden;
     height: 0;
   }
+
+  .wrap {
+    display: flex;
+    gap: 2em;
+    margin-left: 0.5em;
+  }
 }

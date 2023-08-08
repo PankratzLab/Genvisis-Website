@@ -1,0 +1,22 @@
+[
+  {
+    "version": "Genvisis 1.2.0",
+    "date": "June 1, 2024",
+    "download link": "http://genvisis.umn.edu/jar",
+    "changelog": [
+      "Fixed ScatterPlot loading twice bug.",
+      "Added error handling for missing file paths.",
+      "Added Umbrella Project functionality."
+    ]
+  },
+  {
+    "version": "Genvisis 1.1.0",
+    "date": "December 1, 2023",
+    "download link": "http://genvisis.umn.edu/jar",
+    "changelog": [
+      "Fixed sorting error in markers.ser.",
+      "Added colorblind palletes.",
+      "CNV Analysis added to Workflow"
+    ]
+  }
+]

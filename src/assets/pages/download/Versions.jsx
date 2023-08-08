@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function Versions({ content, header, delay }) {
+export default function Versions({ changelog, version, delay, date, download }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -29,13 +29,23 @@ export default function Versions({ content, header, delay }) {
             strokeWidth="9"
           />
         </svg>
-        {header}
+        <h2>{version}</h2>
       </div>
       <motion.div
         animate={{ height: isExpanded ? "auto" : 0, opacity: isExpanded ? 1 : 0 }}
         className="body"
       >
-        {content}
+        <div className="wrap">
+          <div>{date}</div>
+          <a href={download} target="_blank">
+            Download
+          </a>
+        </div>
+        <ul>
+          {changelog.map((e, i) => {
+            return <li key={i}>{e}</li>;
+          })}
+        </ul>
       </motion.div>
     </motion.div>
   );
