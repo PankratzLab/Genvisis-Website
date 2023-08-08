@@ -20,17 +20,17 @@ export default function index() {
             </Link>
           </div>
           <img
-            src="src/assets/pages/home/images/Genvisis-Graphic1.png"
+            src="/images/homepage/Genvisis-Graphic1.png"
             alt="background graphic"
             className="header-background-graphic"
           />
           <img
-            src="src/assets/pages/home/images/computer-screen.png"
+            src="/images/homepage/computer-screen.png"
             alt="computer screen"
             className="computer-screen"
           />
           <img
-            src="src/assets/pages/home/images/home-page-image.png"
+            src="/images/homepage/home-page-image.png"
             alt="Screenshot of the Genvisis Software"
             className="computer-screen-image"
           />
@@ -38,7 +38,7 @@ export default function index() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{duration: 0.6, x:{duration: 1, ease: [0, 0.89, 0.08, 1]}}}
-            src="src/assets/pages/home/images/home-page-image1.png"
+            src="/images/homepage/home-page-image1.png"
             alt="Screenshot of the Genvisis Software"
             className="floating-window-image"
           />
@@ -62,7 +62,7 @@ export default function index() {
           <div className="section-image-container">
             <div className="image-backdrop">
               <img
-                src="src/assets/pages/home/images/home-page-image2.png"
+                src="/images/homepage/home-page-image2.png"
                 alt="Screenshot of the Genvisis Software"
               />
             </div>
@@ -94,7 +94,7 @@ export default function index() {
             <Link to="/features">View Features</Link>
           </div>
           <img
-            src="src/assets/pages/home/images/Features-Graphic.svg"
+            src="/images/homepage/Features-Graphic.svg"
             alt="Genvisis Graphic"
           />
         </section>
@@ -118,7 +118,7 @@ export default function index() {
           </div>
           <div className="graphic-container">
             <img
-              src="src/assets/pages/home/images/Genvisis-Graphic.png"
+              src="/images/homepage/Genvisis-Graphic.png"
               alt="Genvisis Graphic"
             />
           </div>
