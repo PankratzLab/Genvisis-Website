@@ -34,6 +34,24 @@ header.download-container {
     background-color: rgb(255, 255, 255);
     border: solid $blue-light;
   }
+
+  .grid {
+    position: absolute;
+    width: 100vw;
+    height: 400px;
+    z-index: -2;
+    object-fit: cover;
+  }
+
+  .gradient {
+    position: absolute;
+    width: 100vw;
+    height: 330px;
+    background: radial-gradient($white-dark, #00000000);
+    z-index: -1;
+    
+  }
+
 }
 
 .custom-shape-divider-bottom-1686808296 {
@@ -56,7 +74,7 @@ header.download-container {
 
 main.release-content-container {
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   margin-top: 80px;
   padding-block: 2em;
   background-color: rgb(255, 255, 255);

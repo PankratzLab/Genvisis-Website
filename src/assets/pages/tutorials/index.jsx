@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import Footer from "../../../assets/components/Footer"
 
 export default function index() {
   const [sidebar, setSidebar] = useState([]);
@@ -99,6 +100,7 @@ export default function index() {
           </AnimatePresence>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

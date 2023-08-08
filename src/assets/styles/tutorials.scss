@@ -29,6 +29,7 @@ main.tutorial-video {
 
 main.tutorials {
   display: flex;
+  margin-bottom: 6em;
 
   .sidebar {
     margin-top: -20px;
@@ -81,6 +82,7 @@ main.tutorials {
 main.tutorial-video {
   display: flex;
   margin-top: 8em;
+  margin-bottom: 6em;
   gap: 3em;
 
   h1 {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Section from "./Section";
 import { motion } from "framer-motion";
+import Footer from "../../../assets/components/Footer";
 
 export default function index() {
   const [HTML, setHTML] = useState([]);
@@ -16,16 +17,19 @@ export default function index() {
   }, []);
 
   return (
-    <main className="features">
-      <div className="body">
-        {HTML.map((e, i) => {
-          return (
-            <motion.section key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <Section data={e} />
-            </motion.section>
-          );
-        })}
-      </div>
-    </main>
+    <>
+      <main className="features">
+        <div className="body">
+          {HTML.map((e, i) => {
+            return (
+              <motion.section key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <Section data={e} />
+              </motion.section>
+            );
+          })}
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

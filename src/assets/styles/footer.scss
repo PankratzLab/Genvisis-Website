@@ -1,0 +1,44 @@
+$footerTextCol: #707c8f;
+
+footer {
+  background-color: #3a404a;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  color: $footerTextCol;
+  padding-block: 2em;
+
+  a {
+    color: $footerTextCol;
+  }
+
+  ul {
+    list-style-type: none;
+    line-height: 2em;
+    padding-inline: 3em;
+  }
+  
+  .footer-container {
+    display: flex;
+  }
+
+  .left, .right {
+    width: 400px;
+  }
+
+  .left {
+    text-align: right;
+  }
+
+  .vertical-line {
+    position: relative;
+    top: 24px;
+    background-color: #555b66;
+    height: 85%;
+    width: 2px;
+  }
+
+  strong {
+    font-family: $textHeavy;
+  }
+}

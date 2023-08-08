@@ -1,5 +1,6 @@
 import React from "react";
 import Changelog from "./Changelog";
+import Footer from "../../../assets/components/Footer"
 
 export default function index() {
   return (
@@ -15,6 +16,8 @@ export default function index() {
           </a>
         </div>
         <div className="version-notice">Must have Java 11 or newer installed</div>
+        <div className="gradient"></div>
+        <img src="/images/grid.png" alt="grid graphic" className="grid"/>
       </header>
       <div className="custom-shape-divider-bottom-1686808296">
         <svg
@@ -35,6 +38,7 @@ export default function index() {
           <Changelog />
         </div>
       </main>
+      <Footer />
     </>
   );
 }
