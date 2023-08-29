@@ -1,10 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 export default function Footer() {
+  const mediaQuery = useMediaQuery("md");
+  const handleMediaQuery = (big, small) => {
+    let sizeSelect = mediaQuery;
+    if (sizeSelect) {
+      return big;
+    } else {
+      return small;
+    }
+  };
+
   return (
-    <motion.footer initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{delay:0.2}}>
+    <motion.footer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+    >
       <div className="footer-container">
         <div className="left">
           <ul>
@@ -25,7 +40,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="vertical-line"></div>
+        {handleMediaQuery(<div className="vertical-line"></div>, null)}
         <div className="right">
           <ul>
             <li>

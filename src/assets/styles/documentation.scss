@@ -4,10 +4,16 @@
   }
   margin-inline: auto;
   .body {
+    @media (min-width: 1024px) {
+      padding-left: calc(2em + $documentation-sidebar-width);
+    }
+    padding-left: 3em;
+    top: -50px;
     max-width: 100%;
     padding-right: 1em;
     padding-top: 0.1em;
-    padding-left: calc(2em + $documentation-sidebar-width);
+    word-break: break-word;
+    z-index: -1;
   }
 
   pre {
@@ -27,10 +33,15 @@
   }
 
   .docs-image {
-    @media (min-width: 1200px) {
-        width: 760px;
+    
+    @media (min-width: 1024px) {
+      width: 680px;
     }
-    width: calc(100vw - $documentation-sidebar-width - 4em);
+    @media (min-width: 1200px) {
+        width: 780px;
+    }
+    // width: calc(100vw - $documentation-sidebar-width - 4em);
+    width: calc(100vw - 4em);
     &:hover {
       cursor: zoom-in;
     }
@@ -47,10 +58,13 @@
     justify-content: center;
     align-items: center;
     gap: 1em;
-    background-color: rgba(202, 202, 202, 0.63);
+    background-color: rgba(221, 221, 221, 0.781);
+    text-shadow: rgb(255, 255, 255) 0px 0 5px;
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     font-size: 1.2rem;
     color: rgb(49, 49, 49);
+    z-index:3;
     img {
       @media (min-width: 1200px) {
         width: 1160px;
@@ -58,6 +72,11 @@
       width: 90vw;
       user-select: none;
     }
+
+    .caption {
+      max-width: 90vw;
+    }
+
     &:hover {
       cursor: zoom-out;
     }
@@ -72,15 +91,40 @@
   position: fixed;
   top: calc(1em + $navbar-height);
   margin-left: 1em;
+  z-index: 1;
+  pointer-events: none;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.151));
 
   .sidebar-sticky {
+    pointer-events: all;
+    position: relative;
     display: flex;
     flex-direction: column;
     height: calc(100vh - $navbar-height - 2em);
-    background-color: rgb(255, 255, 255);
-    overflow: hidden;
+    background-color: $white-light;
     border-radius: 1em;
+  }
+
+  .expand-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -40px;
+    width: 48px;
+    height: 100px;
+    background-color: $white-light;
+    border-radius: 8px;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+    svg {
+      position: relative;
+      right: -6px;
+      opacity: 0.3;
+    }
   }
 
   h2 {

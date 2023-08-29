@@ -1,11 +1,33 @@
-main.features {
-  padding-top: 2rem;
-
-  @media (min-width: 1200px) {
-    width: 1200px;
-    margin-inline: auto;
+header.features {
+  @media (min-width: 1470px) {
+    top: 0;
   }
-  padding-inline: 2em;
+  top: -50px;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .sub-header {
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+}
+
+main.features {
+  background-color: $white-light;
+  position: relative;
+  top: -30px;
+  .body {
+    @media (min-width: 1200px) {
+      width: 1200px;
+      margin-inline: auto;
+    }
+    padding-top: 2rem;
+    width: 100%;
+    padding-inline: 2em;
+
+  }
 
   .image-container {
     @media (max-width: 600px) {

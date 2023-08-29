@@ -5,17 +5,17 @@ import Footer from "../../../assets/components/Footer"
 export default function index() {
   return (
     <>
-      <header className="download-container">
+      <header className="download container">
         <h1>Download Genvisis</h1>
-        <div className="download-buttons">
+        <div className="buttons">
           <a>
-            <div className="latest-version dl-button">Latest Version</div>
+            <div className="primary button">Latest Version</div>
           </a>
           <a>
-            <div className="previous-version dl-button">Previous Versions</div>
+            <div className="secondary button">Previous Versions</div>
           </a>
         </div>
-        <div className="version-notice">Must have Java 11 or newer installed</div>
+        <div>Must have Java 11 or newer installed</div>
         <div className="gradient"></div>
         <img src="/images/grid.png" alt="grid graphic" className="grid"/>
       </header>

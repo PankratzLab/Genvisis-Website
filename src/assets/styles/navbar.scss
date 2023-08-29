@@ -12,20 +12,56 @@ nav {
         @media (min-width: 1200px) {
             width: 1200px;
             margin-inline: auto;
+            padding-inline: 0;
         }
+
+        @media (min-width: 768px) {
+            padding-right: 0;
+        }
+        
         width: 100%;
         height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 2em;
+        align-items: center;
+        position: relative;
+    }
+    
+    .collapse-button {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .dropdown {
+        background-color: $white-light;
+        padding-top: 1em;
+        border-radius: 5px;
+        position: absolute;
+        right: 0;
+        top: calc($navbar-height - 1em);
+        z-index: -1;
+    }
+
+    svg {
+        top: 4px;
+        position: relative;
+        height: 40px;
     }
 
     ul {
+        @media (min-width: 768px) {
+            flex-direction: row;
+            direction: ltr;
+        }
         margin: 0;
         padding: 0;
         height: 100%;
         display: flex;
+        flex-direction: column;
         list-style-type: none;
-        li:first-child{
-            margin-right:auto;
-        }
+        direction: rtl;
     }
 
     a {
@@ -33,14 +69,21 @@ nav {
         align-items: center;
         height: $navbar-height;
         color: $textCol-dark;
+        
     }
 
     li {
-        padding-inline: 1em;
+        @media (min-width: 768px) {
+            padding-inline: 1em;
+        }
+        padding-inline: 2em;
         height: $navbar-height;
+        
         &:hover {
             cursor: pointer;
+            background-color: $white-dark;
         }
+        transition: 0.2s;
     }
 
     .logo {

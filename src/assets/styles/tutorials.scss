@@ -1,8 +1,8 @@
 main.tutorials,
 header.tutorials,
 main.tutorial-video {
-  @media (min-width: 1200px) {
-    width: 1200px;
+  @media (min-width: 1230px) {
+    width: 1230px;
     margin-inline: auto;
   }
   padding-inline: 2em;
@@ -29,14 +29,21 @@ main.tutorial-video {
 
 main.tutorials {
   display: flex;
+  gap: 2em;
   margin-bottom: 6em;
 
   .sidebar {
-    margin-top: -20px;
-    width: 200px;
+    @media (min-width: 768px) {
+      position: relative;
+    }
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
     a {
       display: block;
       color: $textCol-medium;
+      padding-inline: 1.5em;
       padding-block: 1em;
       transition: 0.2s;
       &:hover {
@@ -54,6 +61,40 @@ main.tutorials {
       }
     }
   }
+
+  .sticky {
+    width: 200px;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.151));
+    border-radius: 0.7em;
+    background-color: $white-light;
+    height: calc(100vh - $navbar-height - 4em);
+    position: sticky;
+    top: 5em;
+    pointer-events: all;
+    .expand-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -40px;
+      width: 48px;
+      height: 100px;
+      background-color: $white-light;
+      border-radius: 8px;
+      z-index: -1;
+      display: flex;
+      align-items: center;
+      &:hover {
+        cursor: pointer;
+      }
+      svg {
+        position: relative;
+        right: -6px;
+        opacity: 0.3;
+      }
+    }
+  }
+
+
 
   .content {
     flex-grow: 1;
@@ -123,14 +164,21 @@ main.tutorial-video {
 
   .sidebar {
     width: 200px;
+    background-color: $white-light;
+    height: fit-content;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.151));
+    border-radius: 0.7em;
+    overflow: hidden;
     color: $textCol-medium;
 
     .back {
       font-size: 1.4rem;
-      padding: 0;
+      padding-block: 0.5em;
+      padding-left: 0.7em;
     }
 
     a {
+      padding-inline: 1em;
       font-size: 1rem;
       color: $textCol-medium;
       display: block;
@@ -157,14 +205,10 @@ main.tutorial-video {
       background: linear-gradient(
         90deg,
         rgba(11, 16, 22, 0) 0%,
-        rgba(5, 8, 10, 0.288) 30%,
+        rgba(5, 8, 10, 0.2) 50%,
         rgba(0, 0, 0, 0) 100%
       );
-      margin-block: 0.8em;
+      margin-block: 0;
     }
-  }
-
-  .video-list {
-    margin-left: 0.5em;
   }
 }

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import Footer from "../../../assets/components/Footer"
+import Footer from "../../../assets/components/Footer";
+import Sidebar from "./Sidebar";
+import useMeasure from "react-use-measure";
 
 export default function index() {
   const [sidebar, setSidebar] = useState([]);
@@ -25,7 +27,6 @@ export default function index() {
         setData(parsedData);
         setContent(parsedData);
       });
-      console.log(res);
     })();
   }, []);
 
@@ -38,6 +39,9 @@ export default function index() {
     }
   }, [category]);
 
+  let [ref, { height }] = useMeasure();
+  console.log(height)
+  
   return (
     <>
       <header className="tutorials">
@@ -45,28 +49,8 @@ export default function index() {
         <div className="dividing-line"></div>
       </header>
       <main className="tutorials">
-        <div className="sidebar">
-          <Link
-            to={`/tutorials/All`}
-            onClick={() => setCategory("All")}
-            className={category === "All" ? "active" : ""}
-          >
-            All
-          </Link>
-          {sidebar.map((e, i) => {
-            return (
-              <Link
-                to={`/tutorials/${Object.keys(e)[0]}`}
-                key={i}
-                onClick={() => setCategory(e)}
-                className={category === e ? "active" : ""}
-              >
-                {Object.keys(e)[0]}
-              </Link>
-            );
-          })}
-        </div>
-        <div className="content">
+        <Sidebar sidebar={sidebar} category={category} setCategory={setCategory} height={height} />
+        <div className="content" ref={ref}>
           <AnimatePresence>
             {content.map((e, i) => {
               return (
@@ -89,7 +73,7 @@ export default function index() {
                         backgroundImage: `url(/Tutorials/videos/${
                           e.src.slice(0, -4) + ".jpg"
                         })`,
-                        backgroundSize: 'cover'
+                        backgroundSize: "cover",
                       }}
                     ></div>
                     <div className="title">{e.title}</div>

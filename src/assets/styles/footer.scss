@@ -1,6 +1,7 @@
 $footerTextCol: #707c8f;
 
 footer {
+  overflow: hidden;
   background-color: #3a404a;
   width: 100vw;
   display: flex;
@@ -19,7 +20,11 @@ footer {
   }
   
   .footer-container {
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
     display: flex;
+    flex-direction: column;
   }
 
   .left, .right {
@@ -27,7 +32,10 @@ footer {
   }
 
   .left {
-    text-align: right;
+    @media (min-width: 768px) {
+      text-align: right;
+    }
+    text-align: left;
   }
 
   .vertical-line {
