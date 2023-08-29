@@ -2,7 +2,7 @@
 
 Automated pipeline for processing data
 
-Genvisis can perform dozens of data processing steps to turn raw array and sequencing data into analyzable data using best practices. After selecting your analysis goals (e.g,. sample quality control, copy number variant calls, imputation-ready VCFs), the Workflow customizes which steps are needed to produce the best version of the desired data.
+Genvisis can perform dozens of data processing steps to turn raw array and sequencing data into analyzable data using best practices. After selecting your analysis goals (e.g., sample quality control, copy number variant calls, imputation-ready VCFs), the Workflow customizes which steps are needed to produce the best version of the desired data.
 
 ![](/images/GenvisisWorkflow_Image1.png)
 Many best practices have been baked into Genvisis, and the color-coded Workflow makes it easy to identify additional options for further optimizing your data.
