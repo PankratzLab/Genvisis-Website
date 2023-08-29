@@ -31,6 +31,7 @@ export default function index() {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (category === "All") {
       setContent(data);
       return;

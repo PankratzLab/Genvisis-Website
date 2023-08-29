@@ -16,7 +16,7 @@ export default function Sidebar({ sidebar, setCategory, category, height }) {
     const listener = () => setMatches(media.matches);
     window.addEventListener("resize", listener);
     return () => window.removeEventListener("resize", listener);
-  }, [matches]);
+  }, [matches, category]);
 
   useEffect(() => {
     controls.start({ x: collapsed ? 0 : "-232px" });
@@ -24,7 +24,7 @@ export default function Sidebar({ sidebar, setCategory, category, height }) {
 
 
   return (
-    <div className="sidebar" style={{height: collapsed ? "auto" : height}}>
+    <div className="sidebar" style={{height: collapsed && matches ? "auto" : height}}>
       <motion.div
         animate={controls}
         transition={{ ease: [0.35, 0.17, 0.3, 0.86] }}
