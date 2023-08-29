@@ -16,13 +16,14 @@ export default function Navbar() {
 
   const [isOpened, setIsOpened] = useState(false);
 
-  const handleDropDownState = (e) => {
-    if (isOpened && !e.target.closest(".collapse-button")) {
-      setIsOpened(false);
-    }
-  };
-
+  
   useEffect(() => {
+    const handleDropDownState = (e) => {
+      // console.log(e.target)
+      if (isOpened && !e.target.closest(".collapse-button")) {
+        setIsOpened(false);
+      }
+    };
     window.addEventListener("click", handleDropDownState);
     return () => window.removeEventListener("click", handleDropDownState);
   }, []);

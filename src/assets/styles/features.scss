@@ -43,6 +43,9 @@ main.features {
     position: relative;
     left: 0;
     transform: translate(-50%, 0%);
+    &:hover {
+      cursor:zoom-in;
+    }
   }
 
   .carousel-container {
@@ -51,6 +54,21 @@ main.features {
     background-color: rgb(255, 255, 255);
     border-radius: 1em;
     margin-block: 2em;
+  }
+
+  .carousel-fit {
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(221, 221, 221, 0.781);
+    text-shadow: rgb(255, 255, 255) 0px 0 5px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    position: fixed;
   }
 
   .carousel {
@@ -78,6 +96,7 @@ main.features {
       width: 60px;
       height: 60px;
       top: 210px;
+      left: 0;
       transform: translate(-50%, -50%);
       background-color: rgb(255, 255, 255);
       box-shadow: 0px 0px 10px rgb(196, 196, 196);
@@ -85,7 +104,6 @@ main.features {
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: 0.2s;
       svg {
         width: 35px;
         height: 35px;
@@ -102,11 +120,22 @@ main.features {
     }
 
     .right {
+      left: auto;
       right: 0;
       transform: translate(50%, -50%);
       svg {
         transform: translateX(2px);
       }
+    }
+
+    .fullscreen-btn {
+      top: 50%;
+      left: 50px;
+    }
+
+    .right.fullscreen-btn {
+      left: auto;
+      right: 50px;
     }
   }
 
