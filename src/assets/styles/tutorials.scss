@@ -27,8 +27,19 @@ main.tutorial-video {
   }
 }
 
+header.mobile-header {
+  padding: 0;
+  h1 {
+    margin-top: 0;
+  }
+}
+
 main.tutorials {
-  display: flex;
+  @media (min-width: 768px) {
+    padding-top: 0;
+    display: flex;
+  }
+  padding-top: 1.5em;
   gap: 2em;
   margin-bottom: 6em;
 

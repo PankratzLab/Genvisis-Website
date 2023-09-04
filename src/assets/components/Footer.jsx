@@ -46,9 +46,9 @@ export default function Footer() {
             <li>
               <strong>Nathan Pankratz, PhD</strong>
             </li>
-            <li>Associate Professor of Laboratory Medicine & Pathology</li>
+            <li>Professor of Laboratory Medicine & Pathology</li>
             <li>University of Minnesota</li>
-            <li>515 Delaware Street SE Minneapolis, MN 55455</li>
+            <li>515 Delaware Street SE Minneapolis <br /> MN 55455</li>
           </ul>
           <ul>
             <li>612-624-2456</li>

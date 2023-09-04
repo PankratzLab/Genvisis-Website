@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Footer from "../../../assets/components/Footer";
 import Sidebar from "./Sidebar";
 import useMeasure from "react-use-measure";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export default function index() {
   const [sidebar, setSidebar] = useState([]);
@@ -41,16 +42,41 @@ export default function index() {
   }, [category]);
 
   let [ref, { height }] = useMeasure();
-  console.log(height)
-  
+
+  const mediaQuery = useMediaQuery("md");
+  const handleMediaQuery = (big, small) => {
+    let sizeSelect = mediaQuery;
+    if (sizeSelect) {
+      return big;
+    } else {
+      return small;
+    }
+  };
+
   return (
     <>
-      <header className="tutorials">
-        <h1>Browse Tutorials</h1>
-        <div className="dividing-line"></div>
-      </header>
+      {handleMediaQuery(
+        <header className="tutorials">
+          <h1>Browse Tutorials</h1>
+          <div className="dividing-line"></div>
+        </header>,
+        null
+      )}
+
       <main className="tutorials">
-        <Sidebar sidebar={sidebar} category={category} setCategory={setCategory} height={height} />
+        <Sidebar
+          sidebar={sidebar}
+          category={category}
+          setCategory={setCategory}
+          height={height}
+        />
+        {handleMediaQuery(
+          null,
+          <header className="tutorials mobile-header">
+            <h1>Browse Tutorials</h1>
+            <div className="dividing-line"></div>
+          </header>
+        )}
         <div className="content" ref={ref}>
           <AnimatePresence>
             {content.map((e, i) => {

@@ -15,8 +15,11 @@ footer {
 
   ul {
     list-style-type: none;
-    line-height: 2em;
     padding-inline: 3em;
+  }
+
+  li {
+    margin-block: 0.7em;
   }
   
   .footer-container {
@@ -28,7 +31,16 @@ footer {
   }
 
   .left, .right {
-    width: 400px;
+    
+    @media (min-width: 768px) {
+      width: 400px;
+    }
+
+    @media (min-width: 950px) {
+      width: 700px;
+    }
+
+    width: auto;
   }
 
   .left {
