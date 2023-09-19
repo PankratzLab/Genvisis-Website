@@ -7,12 +7,20 @@ header.download {
 
 main.release-content-container {
   position: relative;
-  top: -30px;
   width: 100vw;
-  height: 80vh;
+  min-height: 80vh;
   padding-block: 2em;
   background-color: rgb(255, 255, 255);
   z-index: 1;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    top: -30px;
+    background-color: rgb(255, 255, 255);
+  }
 }
 
 .release-content {
@@ -20,7 +28,74 @@ main.release-content-container {
     width: 1140px;
     margin-inline: auto;
   }
+
+  @media (min-width: $medium) {
+    flex-direction: row;
+    align-items: baseline;
+  }
+
   padding-inline: 2em;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2em;
+
+  h2 {
+    margin-bottom: 1.2em;
+  }
+
+  .previous-versions {
+    @media (min-width: $medium) {
+      width: auto;
+    }
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  .example-projects {
+    @media (min-width: $medium) {
+      padding-left: 2em;
+      width: 400px;
+    }
+    position: relative;
+
+    &:before {
+      @media (min-width: $medium) {
+        width: 2px;
+      }
+      content: "";
+      position: absolute;
+      height: 100%;
+      left: 0;
+      background-color: rgb(197, 197, 197);
+    }
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-radius: 0.4em;
+    font-family: $textHeavy;
+    letter-spacing: 0.6px;
+  }
+
+  $button-color: #838a9c;
+
+  .raw-project > .button {
+    background-color: $button-color;
+    color: rgb(255, 255, 255);
+  }
+
+  .completed-project {
+    margin-top: 3em;
+    
+    .button {
+      border: solid $button-color 4px;
+      color: $button-color;
+    }
+  }
 }
 
 .release-boxes-container {
@@ -36,7 +111,7 @@ main.release-content-container {
     font-family: $textNormal;
     margin: 0;
   }
-  
+
   .header {
     margin-block: 1em;
     display: flex;

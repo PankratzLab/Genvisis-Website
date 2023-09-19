@@ -1,6 +1,6 @@
 import React from "react";
-import Changelog from "./Changelog";
 import Footer from "../../../assets/components/Footer"
+import Body from "./Body";
 
 export default function index() {
   return (
@@ -32,12 +32,7 @@ export default function index() {
           ></path>
         </svg>
       </div>
-      <main className="release-content-container">
-        <div className="release-content">
-          <h2 className="changelog">Previous Versions</h2>
-          <Changelog />
-        </div>
-      </main>
+      <Body />
       <Footer />
     </>
   );
