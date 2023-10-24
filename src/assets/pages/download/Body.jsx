@@ -15,33 +15,33 @@ export default function Body() {
           <h2>{content["Example Projects"]}</h2>
           <div className="raw-project">
             <a
-              href={content["Raw Project"].link}
+              href={content["Raw Project Illumina"].link}
               target="_blank"
               className="button"
             >
-              {content["Raw Project"].title}
+              {content["Raw Project Illumina"].title}
             </a>
-            <p>{parse(content["Raw Project"].description)}</p>
+            <p>{parse(content["Raw Project Illumina"].description)}</p>
           </div>
           <div className="raw-project">
             <a
-              href={content["Raw Project"].link}
+              href={content["Raw Project Affymetrix"].link}
               target="_blank"
               className="button"
             >
-              {content["Raw Project"].title}
+              {content["Raw Project Affymetrix"].title}
             </a>
-            <p>{parse(content["Raw Project"].description)}</p>
+            <p>{parse(content["Raw Project Affymetrix"].description)}</p>
           </div>
           <div className="completed-project">
             <a
-              href={content["Completed Project"].link}
+              href={content["Sample Project Illumina"].link}
               target="_blank"
               className="button"
             >
-              {content["Completed Project"].title}
+              {content["Sample Project Illumina"].title}
             </a>
-            <p>{parse(content["Completed Project"].description)}</p>
+            <p>{parse(content["Sample Project Illumina"].description)}</p>
           </div>
         </div>
       </div>
