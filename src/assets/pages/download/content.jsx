@@ -3,7 +3,7 @@ const content = {
   Subtitle: "Must have Java 11 or newer installed",
 
   "Example Projects": "Example Projects",
-  "Raw Project": {
+  "Raw Project Illumina": {
     title: "Download Raw Project - Illumina",
     link: "https://www.google.com/",
     description:
