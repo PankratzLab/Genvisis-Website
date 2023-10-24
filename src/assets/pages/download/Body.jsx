@@ -43,6 +43,16 @@ export default function Body() {
             </a>
             <p>{parse(content["Sample Project Illumina"].description)}</p>
           </div>
+           <div className="completed-project">
+            <a
+              href={content["Sample Project Affymetrix"].link}
+              target="_blank"
+              className="button"
+            >
+              {content["Sample Project Affymetrix"].title}
+            </a>
+            <p>{parse(content["Sample Project Affymetrix"].description)}</p>
+          </div>
         </div>
       </div>
     </main>
