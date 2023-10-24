@@ -23,6 +23,16 @@ export default function Body() {
             </a>
             <p>{parse(content["Raw Project"].description)}</p>
           </div>
+          <div className="raw-project">
+            <a
+              href={content["Raw Project"].link}
+              target="_blank"
+              className="button"
+            >
+              {content["Raw Project"].title}
+            </a>
+            <p>{parse(content["Raw Project"].description)}</p>
+          </div>
           <div className="completed-project">
             <a
               href={content["Completed Project"].link}
