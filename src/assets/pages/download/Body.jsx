@@ -34,7 +34,7 @@ export default function Body() {
             <p>{parse(content["Raw Project Affymetrix"].description)}</p>
           </div>
           <div className="sample-project">
-            <p>
+            <p></p>
             <a
               href={content["Sample Project Illumina"].link}
               target="_blank"
