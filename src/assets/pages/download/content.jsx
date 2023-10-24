@@ -4,16 +4,16 @@ const content = {
 
   "Example Projects": "Example Projects",
   "Raw Project": {
-    title: "Download Raw Project",
+    title: "Download Raw Project - Illumina",
     link: "https://www.google.com/",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ipsum nibh, consequat id erat facilisis, imperdiet",
+      "Contains all the files needed to start a Genvisis project.  Includes 20 samples from the 1000G project in Illumina format.",
   },
   "Completed Project": {
-    title: "Download Completed Project",
+    title: "Download Raw Project - Affymetrix",
     link: "https://www.yahoo.com/?guccounter=1",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ipsum nibh, consequat id erat facilisis, imperdiet",
+      "Contains all the files needed to start a Genvisis project.  Includes 20 samples from the 1000G project in Affymetrix format.",
   },
 
   "Previous Versions": "Previous Versions",
