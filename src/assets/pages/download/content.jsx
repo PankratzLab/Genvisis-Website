@@ -3,14 +3,14 @@ const content = {
   Subtitle: "Must have Java 11 or newer installed",
 
   "Example Projects": "Example Projects",
-  "Raw Project Illumina": {
-    title: "Download Raw Project - Illumina",
+  "Starter Project Illumina": {
+    title: "Download Starter Project - Illumina",
     link: "https://www.google.com/",
     description:
       "Contains all the files needed to start a Genvisis project.  Includes 20 samples from the 1000G project in Illumina format.",
   },
-  "Raw Project Affymetrix": {
-    title: "Download Raw Project - Affymetrix",
+  "Starter Project Affymetrix": {
+    title: "Download Starter Project - Affymetrix",
     link: "https://www.google.com/",
     description:
       "Contains all the files needed to start a Genvisis project.  Includes 20 samples from the 1000G project in Affymetrix format.",
