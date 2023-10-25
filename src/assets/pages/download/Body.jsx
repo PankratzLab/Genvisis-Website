@@ -13,25 +13,25 @@ export default function Body() {
         </div>
         <div className="example-projects">
           <h2>{content["Example Projects"]}</h2>
-          <div className="raw-project">
+          <div className="starter-project">
             <a
-              href={content["Raw Project Illumina"].link}
+              href={content["Starter Project Illumina"].link}
               target="_blank"
               className="button"
             >
-              {content["Raw Project Illumina"].title}
+              {content["Starter Project Illumina"].title}
             </a>
-            <p>{parse(content["Raw Project Illumina"].description)}</p>
+            <p>{parse(content["Starter Project Illumina"].description)}</p>
           </div>
-          <div className="raw-project">
+          <div className="starter-project">
             <a
-              href={content["Raw Project Affymetrix"].link}
+              href={content["Starter Project Affymetrix"].link}
               target="_blank"
               className="button"
             >
-              {content["Raw Project Affymetrix"].title}
+              {content["Starter Project Affymetrix"].title}
             </a>
-            <p>{parse(content["Raw Project Affymetrix"].description)}</p>
+            <p>{parse(content["Starter Project Affymetrix"].description)}</p>
           </div>
           <div className="sample-project">
             <p></p>
