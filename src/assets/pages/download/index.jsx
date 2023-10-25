@@ -9,7 +9,7 @@ export default function index() {
         <h1>Download Genvisis</h1>
         <div className="buttons">
           <a>
-            <div className="primary button"><a href="http://genvisis.umn.edu/jar" target="_blank">Latest Version</a></div>
+            <div className="primary button"><a href="http://genvisis.umn.edu/jar/genvisis.jar" target="_blank">Latest Version</a></div>
           </a>
           <a>
             <div className="secondary button">Previous Versions</div>
