@@ -16,7 +16,6 @@ export default function Body() {
           <div className="starter-project">
             <a
               href={content["Starter Project Illumina"].link}
-              target="_blank"
               className="button"
             >
               {content["Starter Project Illumina"].title}
