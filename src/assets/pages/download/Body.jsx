@@ -7,51 +7,47 @@ export default function Body() {
   return (
     <main className="release-content-container">
       <div className="release-content">
-        <div className="previous-versions">
+        <div className="previous-versions" id="previous-versions">
           <h2 className="changelog">{content["Previous Versions"]}</h2>
           <Changelog />
         </div>
         <div className="example-projects">
           <h2>{content["Example Projects"]}</h2>
           <div className="starter-project">
+            <h3>{content["Starter Project"].title}</h3>
+            <p>{parse(content["Starter Project"].description)}</p>
             <a
-              href={content["Starter Project Illumina"].link}
-              className="button"
-            >
-              {content["Starter Project Illumina"].title}
-            </a>
-            <p>{parse(content["Starter Project Illumina"].description)}</p>
-          </div>
-          <div className="starter-project">
-            <a
-              href={content["Starter Project Affymetrix"].link}
+              href={content["Starter Project"].Illumina}
               target="_blank"
-              className="button"
+              className="button fill"
             >
-              {content["Starter Project Affymetrix"].title}
+              Illumina
             </a>
-            <p>{parse(content["Starter Project Affymetrix"].description)}</p>
+            <a
+              href={content["Starter Project"].Affymetrix}
+              target="_blank"
+              className="button border"
+            >
+              Affymetrix
+            </a>
           </div>
           <div className="sample-project">
-            <p></p>
+            <h3>{content["Sample Project"].title}</h3>
+            <p>{parse(content["Sample Project"].description)}</p>
             <a
-              href={content["Sample Project Illumina"].link}
+              href={content["Sample Project"].Illumina}
               target="_blank"
-              className="button"
+              className="button fill"
             >
-              {content["Sample Project Illumina"].title}
+              Illumina
             </a>
-            <p>{parse(content["Sample Project Illumina"].description)}</p>
-          </div>
-           <div className="sample-project">
             <a
-              href={content["Sample Project Affymetrix"].link}
+              href={content["Sample Project"].Illumina}
               target="_blank"
-              className="button"
+              className="button border"
             >
-              {content["Sample Project Affymetrix"].title}
+              Affymetrix
             </a>
-            <p>{parse(content["Sample Project Affymetrix"].description)}</p>
           </div>
         </div>
       </div>

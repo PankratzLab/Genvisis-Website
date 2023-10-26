@@ -29,6 +29,10 @@ main.features {
 
   }
 
+  section {
+    position: relative;
+  }
+
   .image-container {
     @media (max-width: 600px) {
       height: 280px;
@@ -69,6 +73,7 @@ main.features {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     position: fixed;
+    z-index: 3;
   }
 
   .carousel {

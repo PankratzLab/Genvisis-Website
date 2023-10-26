@@ -69,6 +69,10 @@ main.release-content-container {
       left: 0;
       background-color: rgb(197, 197, 197);
     }
+
+    a {
+      margin-block: 1em;
+    }
   }
 
   .button {
@@ -83,16 +87,18 @@ main.release-content-container {
 
   $button-color: #838a9c;
 
-  .starter-project > .button {
+  .fill {
     background-color: $button-color;
     color: rgb(255, 255, 255);
   }
 
+  .border {
+    border: solid $button-color 4px;
+    color: $button-color;
+  }
+
   .sample-project {
-    .button {
-      border: solid $button-color 4px;
-      color: $button-color;
-    }
+    margin-top: 6em;
   }
 }
 

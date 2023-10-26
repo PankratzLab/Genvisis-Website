@@ -68,10 +68,6 @@ export default function Section({ data }) {
     setIsFullScreen(!isFullScreen);
   };
 
-  // useEffect(() => {
-  //   console.log(containerRef.current.offsetHeight)
-  // }, [emptyContainerHeight])
-
   return (
     <>
       <div className="feature-summary">{content}</div>

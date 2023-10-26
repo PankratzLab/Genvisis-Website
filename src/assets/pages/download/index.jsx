@@ -1,23 +1,29 @@
 import React from "react";
-import Footer from "../../../assets/components/Footer"
+import Footer from "../../../assets/components/Footer";
 import Body from "./Body";
+import content from "./content";
+import { HashLink } from "react-router-hash-link";
 
 export default function index() {
   return (
     <>
       <header className="download container">
-        <h1>Download Genvisis</h1>
+        <h1>{content.title}</h1>
         <div className="buttons">
-          <a>
-            <div className="primary button"><a href="http://genvisis.umn.edu/jar" target="_blank">Latest Version</a></div>
-          </a>
-          <a>
-            <div className="secondary button">Previous Versions</div>
-          </a>
+          <div className="primary button">
+            <a href="http://genvisis.umn.edu/jar" target="_blank">
+              Latest Version
+            </a>
+          </div>
+          <div className="secondary button">
+            <HashLink smooth to="#previous-versions">
+              Previous Versions
+            </HashLink>
+          </div>
         </div>
-        <div>Must have Java 11 or newer installed</div>
+        <div>{content.Subtitle}</div>
         <div className="gradient"></div>
-        <img src="/images/grid.png" alt="grid graphic" className="grid"/>
+        <img src="/images/grid.png" alt="grid graphic" className="grid" />
       </header>
       <div className="custom-shape-divider-bottom-1686808296">
         <svg
