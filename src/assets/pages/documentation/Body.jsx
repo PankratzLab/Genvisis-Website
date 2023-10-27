@@ -56,7 +56,7 @@ export default function Body({ initialPage }) {
         const type = handleContentBlock(children[0].data);
         if (!type) return;
         const typeNoSpace = type.replace(" ", "");
-        return (
+        const block = (
           <div className="block">
             <div className={`header ${typeNoSpace}Header`}>
               <img src={`/images/${typeNoSpace}Icon.svg`} className="icon" />
@@ -65,8 +65,9 @@ export default function Body({ initialPage }) {
             <p>{domToReact(children, options)}</p>
           </div>
         );
+        return name === "li" ? <li>{block}</li> : block
       }
-      
+
       //delete block identifier
       if (type === "text" && handleContentBlock(data)) {
         const type = handleContentBlock(data);
