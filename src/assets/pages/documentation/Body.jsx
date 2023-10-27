@@ -27,7 +27,7 @@ export default function Body({ initialPage }) {
   }, [page, initialPage]);
 
   const options = {
-    replace: ({ name, attribs, children, data }) => {
+    replace: ({ name, attribs, children, data, type }) => {
       //convert all images to clickable images
       if (name === "img") {
         return <Image attribs={attribs} />;
@@ -40,7 +40,7 @@ export default function Body({ initialPage }) {
           </a>
         );
       }
-      
+
       //content blocks
       function handleContentBlock(data) {
         const type = ["Note", "See Also", "Warning"];
@@ -65,6 +65,12 @@ export default function Body({ initialPage }) {
             <p>{domToReact(children, options)}</p>
           </div>
         );
+      }
+      
+      //delete block identifier
+      if (type === "text" && handleContentBlock(data)) {
+        const type = handleContentBlock(data);
+        return <>{data.slice(type.length + 1)}</>;
       }
     },
   };
