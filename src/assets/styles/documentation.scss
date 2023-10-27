@@ -79,6 +79,44 @@
       cursor: zoom-out;
     }
   }
+
+  .block {
+    background-color: #d9dde2;
+    border-radius: 0.4em;
+    overflow: hidden;
+    margin-block: 0.8em;
+    p {
+      margin-inline: 0.7em;
+    }
+
+    .header {
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      padding-left: 0.7em;
+      padding-block: 0.2em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .icon {
+      height: 20px;
+      filter: invert(1);
+    }
+
+    .NoteHeader {
+      background-color: $noteCol;
+    }
+    .SeeAlsoHeader {
+      background-color: $seeAlsoCol;
+    }
+    .WarningHeader {
+      background-color: $warningCol;
+    }
+  }
+
+
 }
 
 .documentation-container .sidebar {
