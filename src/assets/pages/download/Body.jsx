@@ -42,7 +42,7 @@ export default function Body() {
               Illumina
             </a>
             <a
-              href={content["Sample Project"].Illumina}
+              href={content["Sample Project"].Affymetrix}
               target="_blank"
               className="button border"
             >
