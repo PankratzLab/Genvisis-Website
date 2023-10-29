@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {useAnimate} from 'framer-motion'
+import { useAnimate } from "framer-motion";
 
 export default function SidebarCollapseContainer({ handleSidebarItems, keys, values }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [scope, animate] = useAnimate()
+  const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    animate(scope.current, isCollapsed ? {height: 0} : {height: 'auto'})
-  }, [isCollapsed])
+    animate(scope.current, isCollapsed ? { height: 0 } : { height: "auto" });
+  }, [isCollapsed]);
 
   return (
     <div className="collapse-container">

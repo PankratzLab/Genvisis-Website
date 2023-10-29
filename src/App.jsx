@@ -8,6 +8,7 @@ import Tutorials from "./assets/pages/tutorials";
 import Video from "./assets/pages/tutorials/Video";
 import "./assets/styles/index.scss";
 import { Route, Routes } from "react-router-dom";
+import Body from "./assets/pages/documentation/Body";
 
 export default function App() {
   return (
@@ -19,7 +20,9 @@ export default function App() {
         <Route path={"/features"} element={<Features />} />
         <Route path={"/tutorials/:tutorialsId"} element={<Tutorials />} />
         <Route path={"/tutorials/:tutorialsId/:tutorialsId"} element={<Video />} />
-        <Route path={"/documentation/:documentationId"} element={<Documentation />} />
+        <Route path={"/documentation"} element={<Documentation />}>
+          <Route path=":id" element={<Body />}/>
+        </Route>
       </Routes>
     </>
   );

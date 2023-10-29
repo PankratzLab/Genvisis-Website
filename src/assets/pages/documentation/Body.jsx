@@ -1,30 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
-import { PageChange } from ".";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "./Image";
 import parse, { domToReact } from "html-react-parser";
+import { useParams } from "react-router-dom";
 
-export default function Body({ initialPage }) {
-  const [page, setPage] = useContext(PageChange);
+export default function Body() {
   const [HTML, setHTML] = useState();
+  const { id } = useParams();
 
   useEffect(() => {
     (async () => {
       setHTML(null);
-      let p = page;
-      if (initialPage === undefined) return;
-      if (page === "home") {
-        p = initialPage.slice(0, -3);
-      }
-      const data = await fetch(`/docs/${p}.html`);
+      if (id === "home") return;
+      const data = await fetch(`/docs/${id.replace("--", "/")}.html`);
       if (data.status === 404) {
-        setHTML(`${page}.md does not exist in the github repository`);
+        setHTML(`${id}.md does not exist in the github repository`);
         return;
       }
       const res = await data.text();
       setHTML(res);
     })();
-  }, [page, initialPage]);
+  }, [id]);
 
   const options = {
     replace: ({ name, attribs, children, data, type }) => {
@@ -65,7 +61,7 @@ export default function Body({ initialPage }) {
             <p>{domToReact(children, options)}</p>
           </div>
         );
-        return name === "li" ? <li>{block}</li> : block
+        return name === "li" ? <li>{block}</li> : block;
       }
 
       //delete block identifier
@@ -76,25 +72,22 @@ export default function Body({ initialPage }) {
     },
   };
 
-  const handleLoader = () => {
-    if (!HTML) {
-      return (
-        <div className="load-container">
-          <div className="loader">Loading...</div>
-        </div>
-      );
-    }
+  if (!HTML) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ ease: "easeInOut", duration: 0.3 }}
-        className="body"
-      >
-        {parse(HTML, options)}
-      </motion.div>
+      <div className="load-container">
+        <div className="loader">Loading...</div>
+      </div>
     );
-  };
-
-  return handleLoader();
+  }
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ ease: "easeInOut", duration: 0.3 }}
+      className="body"
+    >
+      {parse(HTML, options)}
+    </motion.div>
+  );
 }

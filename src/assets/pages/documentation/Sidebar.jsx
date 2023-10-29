@@ -3,8 +3,9 @@ import SidebarItem from "./SidebarItem";
 import SidebarCollapseContainer from "./SidebarCollapseContainer";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { motion, useAnimation } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-export default function Sidebar({ mdData }) {
+export default function Sidebar() {
   //loop through TOC
   const handleSidebarItems = (data, index) => {
     //create nested container if value is array
@@ -23,54 +24,60 @@ export default function Sidebar({ mdData }) {
     return <SidebarItem key={index} keys={keys} values={values} />;
   };
 
-  const mediaQuery = useMediaQuery("lg");
-  const handleMediaQuery = (big, small) => {
-    let sizeSelect = mediaQuery;
-    if (sizeSelect) {
-      return big;
-    } else {
-      return small;
-    }
-  };
+  const [items, setItems] = useState();
+  const navigate = useNavigate();
+  useEffect(() => {
+    (async function fetchData() {
+      const data = await fetch(`/docs/toc.json`);
+      const res = await data.json();
+      const itemArr = res.map((e, i) => {
+        return handleSidebarItems(e, i);
+      });
+      //navigate to first item
+      navigate(itemArr[0].props.values.slice(0, -3));
+      setItems(itemArr);
+    })();
+  }, []);
 
+  //sidebar collapse controls
+  const mediaQuery = useMediaQuery("lg");
   const controls = useAnimation();
-  const [matches, setMatches] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   useEffect(() => {
-    setCollapsed(matches)
-    const query = `(min-width: 1024px)`;
-    const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
-    const listener = () => setMatches(media.matches);
-    window.addEventListener("resize", listener);
-    return () => window.removeEventListener("resize", listener);
-  }, [matches]);
+    controls.start({ x: mediaQuery ? 0 : "-315px"});
+    setCollapsed(mediaQuery)
+  }, [mediaQuery]);
 
-  useEffect(() => {
-    controls.start({x: collapsed ? 0 : "-315px"})
-  }, [collapsed])
+  const handleExpand = () => {
+    setCollapsed(!collapsed)
+    controls.start({ x: collapsed ? "-315px" : 0});
+  }
 
   return (
     <aside className="sidebar">
-      <motion.div animate={controls} transition={{ease:[.35,.17,.3,.86]}} className="sidebar-sticky">
+      <motion.div
+        animate={controls}
+        transition={{ ease: [0.35, 0.17, 0.3, 0.86] }}
+        className="sidebar-sticky"
+      >
         <h2 className="header">Genvisis Step-By-Step Instructions</h2>
         <div className="sidebar-items">
-          {mdData?.map((e, index) => {
-            return handleSidebarItems(e, index);
+          {items?.map((e) => {
+            return e;
           })}
         </div>
-        {handleMediaQuery(
-          null,
-          <div className="expand-button" onClick={() => setCollapsed(!collapsed)}>
+        {!mediaQuery && (
+          <div className="expand-button" onClick={() => handleExpand()}>
             <svg
               id="a"
               xmlns="http://www.w3.org/2000/svg"
               width="40"
               height="40"
               viewBox="0 0 64 64"
-              style={{transform: collapsed ? "rotate(180deg)" : "rotate(0)", transition: "0.4s"}}
+              style={{
+                transform: collapsed ? "rotate(180deg)" : "rotate(0)",
+                transition: "0.4s",
+              }}
             >
               <path
                 d="m19.53,53.08l23.7-20.07c.64-.54.64-1.48,0-2.02L19.53,10.92"
