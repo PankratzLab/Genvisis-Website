@@ -5,6 +5,8 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { motion, useAnimation } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
+export let firstItem;
+
 export default function Sidebar() {
   //loop through TOC
   const handleSidebarItems = (data, index) => {
@@ -34,7 +36,8 @@ export default function Sidebar() {
         return handleSidebarItems(e, i);
       });
       //navigate to first item
-      navigate(itemArr[0].props.values.slice(0, -3));
+      firstItem = itemArr[0].props.values.slice(0, -3)
+      navigate(firstItem);
       setItems(itemArr);
     })();
   }, []);
