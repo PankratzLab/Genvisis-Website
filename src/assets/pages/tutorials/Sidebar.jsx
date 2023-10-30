@@ -3,11 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-export default function Sidebar({ sidebarItems, setCategory, height }) {
+export default function Sidebar({ contentHeight }) {
   const controls = useAnimation();
   const [collapsed, setCollapsed] = useState(false);
   const mediaQuery = useMediaQuery("md");
-  const {id} = useParams()
+  const { id } = useParams();
 
   useEffect(() => {
     controls.start({ x: mediaQuery ? 0 : "-232px" });
@@ -19,18 +19,23 @@ export default function Sidebar({ sidebarItems, setCategory, height }) {
     controls.start({ x: collapsed ? "-232px" : 0 });
   };
 
+  const [sidebarItems, setSidebarItems] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const data = await fetch("/Tutorials/toc.json");
+      const res = await data.json();
+      setSidebarItems(res);
+    })();
+  }, []);
+
   return (
-    <div className="sidebar" style={{ height: height }}>
+    <div className="sidebar" style={{ height: contentHeight }}>
       <motion.div
         animate={controls}
         transition={{ ease: [0.35, 0.17, 0.3, 0.86] }}
         className="sticky"
       >
-        <Link
-          to={`/tutorials/All`}
-          onClick={() => setCategory("All")}
-          className={id === "All" ? "active" : ""}
-        >
+        <Link to={`/tutorials/All`} className={id === "All" ? "active" : ""}>
           All
         </Link>
         {sidebarItems.map((e, i) => {
