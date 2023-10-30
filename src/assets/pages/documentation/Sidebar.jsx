@@ -37,7 +37,6 @@ export default function Sidebar() {
       });
       //navigate to first item
       firstItem = itemArr[0].props.values.slice(0, -3)
-      navigate(firstItem);
       setItems(itemArr);
     })();
   }, []);
