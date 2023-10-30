@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-export default function Sidebar({ sidebar, setCategory, category, height }) {
+export default function Sidebar({ sidebarItems, setCategory, height }) {
   const controls = useAnimation();
-  const [matches, setMatches] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
-  useEffect(() => {
-    setCollapsed(matches);
-    const query = `(min-width: 768px)`;
-    const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
-    const listener = () => setMatches(media.matches);
-    window.addEventListener("resize", listener);
-    return () => window.removeEventListener("resize", listener);
-  }, [matches, category]);
+  const mediaQuery = useMediaQuery("md");
+  const {id} = useParams()
 
   useEffect(() => {
-    controls.start({ x: collapsed ? 0 : "-232px" });
-  }, [collapsed]);
+    controls.start({ x: mediaQuery ? 0 : "-232px" });
+    setCollapsed(mediaQuery);
+  }, [mediaQuery]);
 
+  const handleSidebar = () => {
+    setCollapsed(!collapsed);
+    controls.start({ x: collapsed ? "-232px" : 0 });
+  };
 
   return (
-    <div className="sidebar" style={{height: collapsed && matches ? "auto" : height}}>
+    <div className="sidebar" style={{ height: height }}>
       <motion.div
         animate={controls}
         transition={{ ease: [0.35, 0.17, 0.3, 0.86] }}
@@ -33,24 +29,24 @@ export default function Sidebar({ sidebar, setCategory, category, height }) {
         <Link
           to={`/tutorials/All`}
           onClick={() => setCategory("All")}
-          className={category === "All" ? "active" : ""}
+          className={id === "All" ? "active" : ""}
         >
           All
         </Link>
-        {sidebar.map((e, i) => {
+        {sidebarItems.map((e, i) => {
           return (
             <Link
               to={`/tutorials/${Object.keys(e)[0]}`}
               key={i}
               onClick={() => setCategory(e)}
-              className={category === e ? "active" : ""}
+              className={id === Object.keys(e)[0] ? "active" : ""}
             >
               {Object.keys(e)[0]}
             </Link>
           );
         })}
-        {!matches && (
-          <div className="expand-button" onClick={() => setCollapsed(!collapsed)}>
+        {!mediaQuery && (
+          <div className="expand-button" onClick={() => handleSidebar()}>
             <svg
               id="a"
               xmlns="http://www.w3.org/2000/svg"

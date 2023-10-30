@@ -9,19 +9,24 @@ import Video from "./assets/pages/tutorials/Video";
 import "./assets/styles/index.scss";
 import { Route, Routes } from "react-router-dom";
 import Body from "./assets/pages/documentation/Body";
+import VideoThumbnails from "./assets/pages/tutorials/VideoThumbnails";
 
 export default function App() {
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/download"} element={<Download />} />
-        <Route path={"/features"} element={<Features />} />
-        <Route path={"/tutorials/:tutorialsId"} element={<Tutorials />} />
-        <Route path={"/tutorials/:tutorialsId/:tutorialsId"} element={<Video />} />
-        <Route path={"/documentation"} element={<Documentation />}>
-          <Route path=":id" element={<Body />}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/download" element={<Download />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/tutorials" element={<Tutorials />}>
+          <Route path=":id" element={<VideoThumbnails />} />
+        </Route>
+        <Route path="/tutorials/:id">
+          <Route path=":id" element={<Video />} />
+        </Route>
+        <Route path="/documentation" element={<Documentation />}>
+          <Route path=":id" element={<Body />} />
         </Route>
       </Routes>
     </>

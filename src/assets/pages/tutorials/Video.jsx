@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../../../assets/components/Footer"
@@ -64,7 +64,7 @@ export default function Video() {
           </div>
         </aside>
         <motion.div
-          key={content.src}
+          key={content?.src}
           initial={{ y: 200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ y: { ease: [0.01, 0.83, 0, 0.99] }, duration: 0.5 }}
@@ -74,9 +74,9 @@ export default function Video() {
             {content.title} <span className="category">{paths[0]}</span>
           </h1>
           <video controls ref={videoRef}>
-            <source src={`/Tutorials/videos/${content.src}`} type="video/mp4" />
+            <source src={`/Tutorials/videos/${content?.src}`} type="video/mp4" />
           </video>
-          <p>{content.summary}</p>
+          <p>{content?.summary}</p>
         </motion.div>
       </main>
       <Footer />

@@ -1,113 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { Outlet } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Footer from "../../../assets/components/Footer";
 import Sidebar from "./Sidebar";
 import useMeasure from "react-use-measure";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export default function index() {
-  const [sidebar, setSidebar] = useState([]);
+  const [sidebarItems, setSidebarItems] = useState([]);
   const [data, setData] = useState([]);
-  const [content, setContent] = useState([]);
   const [category, setCategory] = useState("All");
 
   useEffect(() => {
     (async () => {
       const data = await fetch("/Tutorials/toc.json");
       const res = await data.json();
-      setSidebar(res);
+      setSidebarItems(res);
 
       res.map((e) => {
-        Object.values(e)[0].map((r) => {
-          r.category = Object.keys(e)[0];
-        });
         const parsedData = (prev) => {
           return [...prev, ...Object.values(e)[0]];
         };
         setData(parsedData);
-        setContent(parsedData);
       });
     })();
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (category === "All") {
-      setContent(data);
-      return;
-    } else {
-      setContent(Object.values(category)[0]);
-    }
-  }, [category]);
-
   let [ref, { height }] = useMeasure();
 
   const mediaQuery = useMediaQuery("md");
-  const handleMediaQuery = (big, small) => {
-    let sizeSelect = mediaQuery;
-    if (sizeSelect) {
-      return big;
-    } else {
-      return small;
-    }
-  };
+  const header = (
+    <header className={`tutorials ${mediaQuery ? "" : "mobile-header"}`}>
+      <h1>Browse Tutorials</h1>
+      <div className="dividing-line"></div>
+    </header>
+  );
 
   return (
     <>
-      {handleMediaQuery(
-        <header className="tutorials">
-          <h1>Browse Tutorials</h1>
-          <div className="dividing-line"></div>
-        </header>,
-        null
-      )}
-
+      {mediaQuery && header}
       <main className="tutorials">
         <Sidebar
-          sidebar={sidebar}
+          sidebarItems={sidebarItems}
           category={category}
           setCategory={setCategory}
           height={height}
         />
-        {handleMediaQuery(
-          null,
-          <header className="tutorials mobile-header">
-            <h1>Browse Tutorials</h1>
-            <div className="dividing-line"></div>
-          </header>
-        )}
+        {!mediaQuery && header}
         <div className="content" ref={ref}>
           <AnimatePresence>
-            {content.map((e, i) => {
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{
-                    y: 50,
-                    opacity: 0,
-                    transition: { ease: "easeIn" },
-                  }}
-                  transition={{ delay: i * 0.05, y: { ease: [0.01, 0.83, 0, 0.99] } }}
-                  className="thumbnail-container"
-                >
-                  <Link to={`/tutorials/${e.category}/${e.title}`}>
-                    <div
-                      className="thumbnail"
-                      style={{
-                        backgroundImage: `url(/Tutorials/videos/${
-                          e.src.slice(0, -4) + ".jpg"
-                        })`,
-                        backgroundSize: "cover",
-                      }}
-                    ></div>
-                    <div className="title">{e.title}</div>
-                  </Link>
-                </motion.div>
-              );
-            })}
+            <Outlet />
           </AnimatePresence>
         </div>
       </main>
