@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { motion, AnimatePresence } from "framer-motion";
+import { fetchData } from "../pages/documentation/Sidebar";
 
 export default function Navbar() {
   const mediaQuery = useMediaQuery("md");
@@ -16,7 +17,6 @@ export default function Navbar() {
 
   const [isOpened, setIsOpened] = useState(false);
 
-  
   useEffect(() => {
     const handleDropDownState = (e) => {
       // console.log(e.target)
@@ -70,6 +70,15 @@ function NavbarDropDown({ isOpened, setIsOpened }) {
 }
 
 function NavbarItems() {
+  const [documentationLink, setDocumentationLink] = useState("")
+  useEffect(() => {
+    //gets the first page for the documentation
+    (async () => {
+      const itemArr = await fetchData()
+      const firstItem = itemArr[0].props.values.slice(0, -3);
+      setDocumentationLink(firstItem)
+    })();
+  }, []);
   return (
     <ul>
       <li>
@@ -82,7 +91,7 @@ function NavbarItems() {
         <Link to="/tutorials/All">Tutorials</Link>
       </li>
       <li>
-        <Link to="/documentation/home">Documentation</Link>
+        <Link to={`/documentation/${documentationLink}`}>Documentation</Link>
       </li>
     </ul>
   );

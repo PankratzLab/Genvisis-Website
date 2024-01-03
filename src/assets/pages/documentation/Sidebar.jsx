@@ -4,37 +4,38 @@ import SidebarCollapseContainer from "./SidebarCollapseContainer";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { motion, useAnimation } from "framer-motion";
 
-export let firstItem;
+//loop through TOC
+const handleSidebarItems = (data, index) => {
+  //create nested container if value is array
+  const keys = Object.keys(data)[0];
+  const values = Object.values(data)[0];
+  if (Array.isArray(values)) {
+    return (
+      <SidebarCollapseContainer
+        key={index}
+        keys={keys}
+        values={values}
+      />
+    );
+  }
+  return <SidebarItem key={index} keys={keys} values={values} />;
+};
+
+export async function fetchData() {
+  const data = await fetch(`/docs/toc.json`);
+  const res = await data.json();
+  const itemArr = res.map((e, i) => {
+    return handleSidebarItems(e, i);
+  });
+  return itemArr
+}
 
 export default function Sidebar() {
-  //loop through TOC
-  const handleSidebarItems = (data, index) => {
-    //create nested container if value is array
-    const keys = Object.keys(data)[0];
-    const values = Object.values(data)[0];
-    if (Array.isArray(values)) {
-      return (
-        <SidebarCollapseContainer
-          key={index}
-          keys={keys}
-          values={values}
-        />
-      );
-    }
-    return <SidebarItem key={index} keys={keys} values={values} />;
-  };
 
   const [items, setItems] = useState();
   useEffect(() => {
-    (async function fetchData() {
-      const data = await fetch(`/docs/toc.json`);
-      const res = await data.json();
-      console.log(res)
-      const itemArr = res.map((e, i) => {
-        return handleSidebarItems(e, i);
-      });
-      //navigate to first item
-      firstItem = itemArr[0].props.values.slice(0, -3)
+    (async () => {
+      const itemArr = await fetchData()
       setItems(itemArr);
     })();
   }, []);

@@ -2,21 +2,15 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "./Image";
 import parse, { domToReact } from "html-react-parser";
-import { useNavigate, useParams } from "react-router-dom";
-import { firstItem } from "./Sidebar";
+import { useParams } from "react-router-dom";
 
 export default function Body() {
   const [HTML, setHTML] = useState();
   const { id } = useParams();
-  const navigate = useNavigate()
 
   useEffect(() => {
     (async () => {
       setHTML(null);
-      if (id === "home") {
-        navigate(`/documentation/${firstItem}`)
-        return
-      }
       const data = await fetch(`/docs/${id.replace("--", "/")}.html`);
       if (data.status === 404) {
         setHTML(`${id}.md does not exist in the github repository`);
