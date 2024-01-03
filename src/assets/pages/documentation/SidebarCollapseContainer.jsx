@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useAnimate } from "framer-motion";
+import SidebarItem from "./SidebarItem";
 
-export default function SidebarCollapseContainer({ handleSidebarItems, keys, values }) {
+export default function SidebarCollapseContainer({ keys, values, setParentCollapse }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
+    if (!!setParentCollapse) setParentCollapse(isCollapsed)
     animate(scope.current, isCollapsed ? { height: 0 } : { height: "auto" });
   }, [isCollapsed]);
 
@@ -38,7 +40,26 @@ export default function SidebarCollapseContainer({ handleSidebarItems, keys, val
       </div>
       <div ref={scope} className="nested-group">
         {values.map((e, index) => {
-          return handleSidebarItems(e, index);
+          if (typeof Object.values(e)[0] === "object") {
+            return (
+              <SidebarCollapseContainer
+                key={index}
+                keys={Object.keys(e)[0]}
+                values={Object.values(e)[0]}
+                setParentCollapse={setIsCollapsed}
+              />
+            );
+          } else {
+            return (
+              <SidebarItem
+                key={index}
+                keys={Object.keys(e)[0]}
+                values={Object.values(e)[0]}
+                isCollapsed={isCollapsed}
+                setIsCollapsed={setIsCollapsed}
+              />
+            );
+          }
         })}
       </div>
     </div>

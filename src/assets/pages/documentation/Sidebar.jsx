@@ -3,7 +3,6 @@ import SidebarItem from "./SidebarItem";
 import SidebarCollapseContainer from "./SidebarCollapseContainer";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { motion, useAnimation } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 
 export let firstItem;
 
@@ -17,7 +16,6 @@ export default function Sidebar() {
       return (
         <SidebarCollapseContainer
           key={index}
-          handleSidebarItems={handleSidebarItems}
           keys={keys}
           values={values}
         />
@@ -27,11 +25,11 @@ export default function Sidebar() {
   };
 
   const [items, setItems] = useState();
-  const navigate = useNavigate();
   useEffect(() => {
     (async function fetchData() {
       const data = await fetch(`/docs/toc.json`);
       const res = await data.json();
+      console.log(res)
       const itemArr = res.map((e, i) => {
         return handleSidebarItems(e, i);
       });
