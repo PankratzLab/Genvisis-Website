@@ -31,7 +31,7 @@ export default function Header() {
           <Link className="download" to="/download">
             Download Genvisis
           </Link>
-          <Link className="documentation" to="/documentation/home">
+          <Link className="documentation" to="/documentation/introduction">
             Documentation
           </Link>
         </div>
